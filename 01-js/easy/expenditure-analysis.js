@@ -38,7 +38,6 @@ function calculateTotalSpentByCategory(transactions) {
     }
   }
   
-  // console.log(op)
   return op
 }
 

@@ -8,6 +8,19 @@ Hint - use Date class exposed in JS
 There is no automated test for this one, this is more for you to understand time goes up as computation goes up
 */
 
-function calculateTime(n) {
-    return 0.01;
+function sum1ToK(k){
+    let s = 0;
+    for(let i = 1; i <= k; i++){
+        s += i;
+    }
 }
+function calculateTime(n) {
+    const start = Date.now();
+    let k  = 1000000000;
+    console.log("Function called for 1 to " + k)
+    sum1ToK(k);
+    console.log("Time elapsed : " + (Date.now() - start) + "ms");
+    
+}
+
+calculateTime(0);

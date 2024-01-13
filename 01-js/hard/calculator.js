@@ -16,6 +16,82 @@
   Once you've implemented the logic, test your code by running
 */
 
-class Calculator {}
+class Calculator {
+  constructor(){
+    this.result = 0;
+  }
+  add(num){
+    this.result += num;
+  }
+  subtract(num){
+    this.result -= num;
+  }
+  multiply(num){
+    this.result *= num;
+  }
+  divide(num){
+    if(num == 0){
+      throw new Error("division by 0 error")
+    }else{
+      this.result /= num;
+    }
+  }
+  clear(){
+    this.result = 0;
+  }
+  getResult(){
+    return this.result;
+  }
+
+ 
+  calculate(exp){
+    let expAr = exp.replace(/\s/g,'')
+
+    if(!this.bracketsBalanced(expAr)){
+      throw new Error("brackets are not balanced");
+
+    }
+    if(expAr.match(/\/0/)){
+      throw new Error();
+    }
+    try{
+      this.result = eval(expAr)
+      
+    }catch(error){
+      throw new Error('Invalid expression');
+    }
+  }
+  bracketsBalanced(exp){
+    let stack = []
+    let openBr = ["(",'{','[']
+    let closeBr = [')','}',']']
+
+    for(let cur of exp){
+
+      if(cur === '(' || cur === '[' || cur === '{'){
+        stack.push(cur);
+ 
+      }else if(cur === ')' || cur === ']' || cur === '}'){
+        if(stack.length==0 || !this.validBrackets(stack.pop(),cur) ){
+          return false;
+        }
+      }
+    }
+
+    return stack.length == 0;
+  }
+  validBrackets(top,cur){
+    if(top === '(' && cur === ')')return true;
+    if(top === '{' && cur === '}')return true;
+    if(top === '[' && cur === ']')return true;
+    
+    return false;
+  }
+
+}
+
+function trimEach(str){
+  return str.trim();
+}
 
 module.exports = Calculator;

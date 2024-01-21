@@ -4,7 +4,18 @@
  * the function should return a promise just like before
  */
 
-function sleep(milliseconds) {
+function anotherAsyncFn(milliseconds){
+    return new Promise((resolve) =>{
+        setTimeout(() => {
+            // resolve(`ok done after ${milliseconds} ms`);
+            resolve();
+        },milliseconds)
+    })
+}
+async function sleep(milliseconds) {
+    const val = await anotherAsyncFn(milliseconds);
+    // console.log(val);
 }
 
+// sleep(3000);
 module.exports = sleep;

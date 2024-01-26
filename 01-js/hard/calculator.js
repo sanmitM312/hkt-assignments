@@ -51,6 +51,7 @@ class Calculator {
       throw new Error("brackets are not balanced");
 
     }
+    // matching division by 0 anywhere 
     if(expAr.match(/\/0/)){
       throw new Error();
     }

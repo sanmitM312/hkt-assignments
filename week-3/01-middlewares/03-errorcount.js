@@ -23,4 +23,13 @@ app.get('/errorCount', function(req, res) {
   res.status(200).json({ errorCount });
 });
 
+app.use((err, req, res, next) => {
+  // console.error(err.stack)
+  errorCount++;
+  res.status(404).send('Sorry,something broke!')
+})
+
+app.listen(3000,() => {
+  console.log("Server running on port 3000 ");
+})
 module.exports = app;

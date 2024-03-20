@@ -6,11 +6,17 @@ import { Assignment3 } from './components/Assignment3'
 function App() {
   return (
     <>
-      <Assignment1 />
+      {/* <Assignment1 /> */}
       {/* <Assignment2 /> */}
-      {/* <Assignment3 /> */}
+      <Assignment3 />
     </>
   )
 }
-
+function DummyComp(){
+  return (
+    <div>
+      <button>Click Me!</button>
+    </div>
+  )
+}
 export default App
